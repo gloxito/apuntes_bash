@@ -1,0 +1,56 @@
+#1. Crea un alias llamdo "ll" que al llamarlo se ejecute el comando ls -l 
+	alias ll='ls -l'
+
+#2. Muestra por pantalla toda la información de particiones todos los discos duros que hay en el sistema. Asume que sin ser root has de tener permisos de superusuario.
+	sudo fdisk -l
+
+#3. Imprime por pantalla todas las líneas del texto 53_texto.txt que comiencen por la letra "B".
+	grep -E '^B' barça.txt
+
+#4. Consigue que en archivo 31_texto.txt el usuario tenga todos los permisos (leer, escribir y ejecutar),
+que el grupo tenga los permisos de leer y ejecutar,
+y que el público tenga el permiso de ejecutar.
+Compruebalo despues con el comando: ls -l 31_texto.txt.
+Se veria así: "-rwxr-xr--"
+	chmod 754 31_texto.txt
+
+#5. Muéstrame por pantalla un resumen del espacio disponible en todos los discos duros.
+	df -h /dev/sd*
+
+#6. Del archivo texto.txt, muestra solamente en color las palabras que contengan 10 o más caracteres. Sin que
+se muestre el texto entero.
+	grep --color -Eo '[[:alpha:]]{10,}' texto.txt
+
+#7. Necesito que crees un enlace simbólico llamado "mi_enlace" y que apunte al archivo 41_texto.txt en la misma carpeta.
+	ln -s 41_texto.txt mi_enlace
+
+#8. ¿Cuál es el comando para formatear la segunda partición deb segundo disco duro con sistema de archivos tipo ext4?	
+    Asume que no eres root.
+	sudo mkfs.ext4 /dev/sdb2
+
+#9. ¿Cuál sería el comando para comprimir un directorio llamado arbolaco desde la CLI de Linux con un formato .tar.gz?
+    Asume que el nombre del archivo es el mismo que el del directorio.
+	tar -cvzf arbolaco.tar.gz arbolaco
+
+#10. En el caso que fueras root muéstrame los días mínimos que tiene que transcurrir al usuario fran para cambiar la contraseña
+	chage -l fran
+
+#11. Mostrar por pantalla un resumen del espacio disponible en todos los discos duros.
+	df -h /dev/sd*
+
+#12. Muestra todas las palabras que cumplan estas condiciones en el interior del fichero spanish adjunto. Las palabras tienen que empezar por t y estar seguidas  
+     de uno de los siguientes caracteres: a,e o i. Tienen que acabar con la vocal  a.
+	grep ^t[aei].*a$ spanish
+
+#13. Tienes un archivo llamado "documento.txt" en tu directorio de descargas (crealo con nano), y deseas copiarlo a tu escritorio. 
+     Usa paths relativos y asume que Escritorios y Descargas están en castellano.
+	cp ~/Descargas/documento.txt ~/Escritorio
+
+#14. Explica cómo crear una partición primaria de 1GB con el comando fdisk.
+	Introduce el comando "fdisk /dev/sdb" después presiona "n" para crear una 
+	nueva particion, despues presione "p" para que la partición sea primaria,
+	después introduce "+1G" para el espacio, y por último introduce "w" para
+	guardar y salir.
+
+#15. Mostrar las primeras 10 líneas del archivo 23_texto.txt para revisar los registros más recientes.
+	head -n 10 23_texto.txt
